@@ -58,3 +58,27 @@ window.addEventListener("scroll", function () {
 
 // ********** smooth scroll ************
 // select links
+const scrollLinks = document.querySelectorAll(".scroll-link");
+console.log(scrollLinks);
+
+scrollLinks.forEach(function (link) {
+  link.addEventListener("click", function (e) {
+    e.preventDefault();
+    // navigate to specific spot...add the slice to skip the #
+    const id = e.currentTarget.getAttribute("href").slice(1);
+    // console.log(id);
+    const element = document.getElementById(id);
+    // console.log(element);
+
+    // get the position of that element
+    let position = element.offsetTop;
+    // console.log(position);
+
+    window.scrollTo({
+      left: 0,
+      top: position - 100,
+    });
+    // close the navbar after a click
+    linksContainer.style.height = 0;
+  });
+});
